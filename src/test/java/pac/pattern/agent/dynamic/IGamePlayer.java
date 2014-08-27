@@ -1,9 +1,11 @@
 package pac.pattern.agent.dynamic;
 
-/**
- * Created by Alvez on 14-8-26.
- */
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+
 public interface IGamePlayer {
     void login();
     void play();
+
 }

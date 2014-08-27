@@ -2,7 +2,6 @@ package pac.pattern.agent.general.impl;
 
 import pac.pattern.agent.general.IGamePlayer;
 
-
 public class GamePlayerProxy implements IGamePlayer{
     private IGamePlayer gamePlayer;
 

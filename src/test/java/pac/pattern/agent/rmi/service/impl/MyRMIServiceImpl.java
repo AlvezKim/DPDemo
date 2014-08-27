@@ -8,9 +8,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
-/**
- * Created by Alvez on 14-8-26.
- */
 public class MyRMIServiceImpl implements MyRMIService {
     @Override
     public String sendMsg() {
