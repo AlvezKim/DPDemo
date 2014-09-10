@@ -14,8 +14,9 @@ public class ObjectStructure {
     }
 
     public static void main(String[] args) {
+        Visitor visitor = new ConcreteVisitor();
         for (int i = 0; i < 10; i++) {
-            ObjectStructure.createElement().accept(new ConcreteVisitor());
+            ObjectStructure.createElement().accept(visitor);
         }
     }
 }
