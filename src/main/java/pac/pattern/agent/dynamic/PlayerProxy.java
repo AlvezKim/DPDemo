@@ -1,5 +1,7 @@
 package pac.pattern.agent.dynamic;
 
+
+
 import pac.pattern.agent.dynamic.impl.GamePlayer;
 
 import java.lang.reflect.InvocationHandler;
@@ -8,9 +10,10 @@ import java.lang.reflect.Proxy;
 
 public class PlayerProxy implements InvocationHandler{
     private IGamePlayer gamePlayer;
+    public PlayerProxy(IGamePlayer gamePlayer){this.gamePlayer=gamePlayer;}
 
-    public PlayerProxy(IGamePlayer gamePlayer) {
-        this.gamePlayer = gamePlayer;
+    public Object getInstance(){
+        return Proxy.newProxyInstance(this.gamePlayer.getClass().getClassLoader(),this.gamePlayer.getClass().getInterfaces(),this);
     }
 
     @Override
@@ -23,12 +26,9 @@ public class PlayerProxy implements InvocationHandler{
     }
 
     public static void main(String[] args) {
-        IGamePlayer player = new GamePlayer();
-        PlayerProxy proxy = new PlayerProxy(player);
-        IGamePlayer player1 = (IGamePlayer) Proxy.newProxyInstance(player.getClass().getClassLoader(), new Class[]{IGamePlayer.class}, proxy);
-        player1.login();
-        player1.play();
-        System.out.println();
+        PlayerProxy proxy = new PlayerProxy(new GamePlayer());
+        IGamePlayer player = (IGamePlayer) proxy.getInstance();
+        player.play();
     }
 
 }
